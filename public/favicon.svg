@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Gold Gradient -->
+    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE07A" />
+      <stop offset="100%" stop-color="#B8860B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Rounded Square Background (solid #0a0a0a) -->
+  <rect width="64" height="64" rx="14" fill="#0a0a0a" />
+
+  <!-- Bold Letter "G" -->
+  <text 
+    x="32" 
+    y="27" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-weight="900" 
+    font-size="34" 
+    fill="url(#gold-gradient)" 
+    text-anchor="middle" 
+    dominant-baseline="middle"
+  >G</text>
+
+  <!-- Horizontal Barbell -->
+  <!-- Barbell shaft -->
+  <rect x="18" y="47" width="28" height="2" rx="1" fill="url(#gold-gradient)" />
+  <!-- Barbell plates (left and right circles) -->
+  <circle cx="16" cy="48" r="3.5" fill="url(#gold-gradient)" />
+  <circle cx="48" cy="48" r="3.5" fill="url(#gold-gradient)" />
+</svg>
