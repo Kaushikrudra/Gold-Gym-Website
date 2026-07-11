@@ -1,6 +1,6 @@
 # 🏋️ Neo Fitness Gym - Premium Fitness Landing Page
 
-A fully responsive, high-performance, multi-page landing platform for **Neo Fitness Gym** built with React, Vite, Tailwind CSS v4, and React Router. Featuring a sleek modern dark-gold design aesthetic, client-side BMI calculations, dynamic booking schedulers, sliding reviews, and SEO optimization.
+A fully responsive, high-performance, multi-page landing platform for **Neo Fitness Gym** built with React, Vite, Tailwind CSS v4, and React Router. Featuring a sleek modern dark-red design aesthetic, background videos, client-side BMI calculations, dynamic booking schedulers, sliding reviews, and SEO optimization.
 
 ---
 
@@ -9,9 +9,9 @@ A fully responsive, high-performance, multi-page landing platform for **Neo Fitn
 The project is styled using **Tailwind CSS v4's CSS-first theme configuration** inside `src/index.css`:
 *   **Primary Background**: `#0a0a0a` (Deep Slate Black)
 *   **Secondary Background**: `#141414` (Dark Charcoal Card fill)
-*   **Gold Accents**: Primary Gold (`#FFD700`), Dark Gold (`#B8860B`), and Highlight Gold (`#FFC93C`)
-*   **Typography**: Clean Sans-Serif system fonts (`system-ui`) with gold-stroke headings (`.text-stroke-gold`) and clean `#b3b3b3` body texts.
-*   **Gradients**: Custom gold-to-black diagonal cuts (`.gold-gradient`).
+*   **Red Accents**: Primary Red (`#EF4444`), Dark Red (`#991B1B`), and Highlight Red (`#F87171`)
+*   **Typography**: Clean Sans-Serif system fonts (`system-ui`) with red-stroke headings (`.text-stroke-gold`) and clean `#b3b3b3` body texts.
+*   **Gradients**: Custom red-to-black diagonal cuts (`.gold-gradient`).
 
 ---
 
