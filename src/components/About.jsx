@@ -17,21 +17,24 @@ const About = () => {
             {/* The Diagonal Gold Stripe */}
             <div className="absolute top-0 bottom-0 left-[10%] lg:left-[5%] w-[8px] bg-gradient-to-b from-gold-primary via-gold-dark to-transparent transform -skew-x-12 z-0 hidden sm:block" />
 
-            {/* The Image Container with border and shadow */}
-            <div className="relative z-10 w-full max-w-[450px] aspect-[4/5] bg-bg-secondary shadow-2xl overflow-hidden">
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                poster="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=800&auto=format&fit=crop"
-                className="w-full h-full object-cover animate-fade-in"
-              >
-                <source src={aboutVideoSrc} type="video/mp4" />
-              </video>
+            {/* Wrapper for the Video and Badge to allow absolute overflow badge placement */}
+            <div className="relative z-10 w-full max-w-[450px] aspect-[4/5]">
+              {/* The Video Container with border, shadow and overflow-hidden */}
+              <div className="w-full h-full bg-bg-secondary shadow-2xl overflow-hidden">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  poster="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=800&auto=format&fit=crop"
+                  className="w-full h-full object-cover animate-fade-in"
+                >
+                  <source src={aboutVideoSrc} type="video/mp4" />
+                </video>
+              </div>
               
               {/* Overlapping diagonal accent badge */}
-              <div className="absolute -bottom-5 -right-5 bg-gold-primary text-black font-black px-6 py-3 tracking-widest text-xs uppercase hidden sm:block transform hover:scale-105 transition-transform duration-300">
+              <div className="absolute -bottom-3 -right-3 sm:-bottom-5 sm:-right-5 bg-gold-primary text-black font-black px-4 py-2 sm:px-6 sm:py-3 tracking-widest text-[10px] sm:text-xs uppercase transform hover:scale-105 transition-transform duration-300 z-20">
                 8+ YEARS EXP
               </div>
             </div>
