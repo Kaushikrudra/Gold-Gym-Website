@@ -7,7 +7,7 @@ const FAQAccordion = () => {
   const faqs = [
     {
       q: "What are your gym timings?",
-      a: "We are open Monday to Saturday from 5:00 AM to 11:00 PM, and Sundays from 6:00 AM to 4:00 PM."
+      a: "We are open Monday to Saturday from 6:00 AM to 10:00 PM, and Sundays from 8:00 AM to 2:00 PM."
     },
     {
       q: "Do I need to bring my own equipment?",

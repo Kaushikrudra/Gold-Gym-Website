@@ -1,40 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Search } from 'lucide-react';
 
+// Import images from assets folder
+import img1 from '../assets/gallery/neo-fit-gym-1.png';
+import img2 from '../assets/gallery/neo-fit-gym-2.png';
+import img3 from '../assets/gallery/neo-fit-gym-3.png';
+import img4 from '../assets/gallery/neo-fit-gym-4.png';
+import img5 from '../assets/gallery/neo-fit-gym-5.png';
+import img6 from '../assets/gallery/neo-fit-gym-6.png';
+
 const Gallery = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
   const images = [
-    {
-      src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop',
-      alt: 'Weightlifting Competition',
-      className: 'md:col-span-2 md:row-span-2 h-[420px] md:h-full'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop',
-      alt: 'Dumbbell Rows Workout',
-      className: 'h-[200px] md:h-[250px]'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1605296867304-46d5465a25f1?q=80&w=800&auto=format&fit=crop',
-      alt: 'Bicep Curl Exercise',
-      className: 'h-[200px] md:h-[250px]'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=800&auto=format&fit=crop',
-      alt: 'Squat Rack Workout',
-      className: 'h-[200px] md:h-[250px]'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=800&auto=format&fit=crop',
-      alt: 'Treadmill Run',
-      className: 'h-[200px] md:h-[250px]'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=800&auto=format&fit=crop',
-      alt: 'Full Gym Setup',
-      className: 'md:col-span-3 h-[250px] md:h-[350px]'
-    }
+    { src: img1, alt: 'Weightlifting Competition', category: 'TRAINING' },
+    { src: img2, alt: 'Dumbbell Rows Workout', category: 'TRAINING' },
+    { src: img3, alt: 'Bicep Curl Exercise', category: 'EQUIPMENT' },
+    { src: img4, alt: 'Squat Rack Workout', category: 'EQUIPMENT' },
+    { src: img5, alt: 'Treadmill Run', category: 'MEMBERS' },
+    { src: img6, alt: 'Full Gym Setup', category: 'MEMBERS' }
   ];
+
+  const showPrevImage = (e) => {
+    e.stopPropagation();
+    setSelectedImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const showNextImage = (e) => {
+    e.stopPropagation();
+    setSelectedImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  useEffect(() => {
+    if (selectedImageIndex === null) return;
+    
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedImageIndex(null);
+      if (e.key === 'ArrowLeft') setSelectedImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+      if (e.key === 'ArrowRight') setSelectedImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImageIndex]);
 
   return (
     <section id="gallery" className="py-24 bg-bg-primary relative overflow-hidden">
@@ -48,12 +57,13 @@ const Gallery = () => {
           <div className="w-24 h-[2px] bg-gold-primary mx-auto mt-4" />
         </div>
 
-        {/* Asymmetrical Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto mb-12">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {images.map((img, idx) => (
             <div 
               key={idx}
-              className={`relative overflow-hidden group border border-gold-dark/10 ${img.className}`}
+              onClick={() => setSelectedImageIndex(idx)}
+              className="relative overflow-hidden group border border-gold-dark/10 transition-all duration-500 transform hover:scale-[1.02] aspect-[4/3] w-full cursor-pointer"
             >
               {/* Image */}
               <img 
@@ -63,9 +73,9 @@ const Gallery = () => {
               />
 
               {/* Hover Gold Overlay */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-10">
-                <div className="w-12 h-12 rounded-full bg-gold-primary flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                  <Search className="w-6 h-6 text-black" />
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                <div className="w-12 h-12 rounded-full bg-gold-primary flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg shadow-gold-primary/20">
+                  <Search className="w-6 h-6 text-black stroke-[2.5]" />
                 </div>
               </div>
 
@@ -85,6 +95,69 @@ const Gallery = () => {
           </Link>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImageIndex !== null && (
+        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 transition-opacity duration-300 animate-fade-in">
+          
+          {/* Close button */}
+          <button
+            onClick={() => setSelectedImageIndex(null)}
+            className="absolute top-6 right-6 text-white hover:text-gold-primary transition-colors p-2 z-60"
+            aria-label="Close lightbox"
+          >
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Prev Button */}
+          <button
+            onClick={showPrevImage}
+            className="absolute left-4 sm:left-8 text-white hover:text-gold-primary transition-colors p-2 z-60 bg-bg-secondary/40 rounded-full border border-gold-dark/20 hover:bg-gold-primary/10"
+            aria-label="Previous image"
+          >
+            <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Main Image Container */}
+          <div className="relative max-w-5xl max-h-[80vh] w-full flex items-center justify-center select-none">
+            <img
+              src={images[selectedImageIndex].src}
+              alt={images[selectedImageIndex].alt}
+              className="max-w-full max-h-[80vh] object-contain border border-gold-dark/20 shadow-2xl animate-scale-up"
+            />
+            
+            {/* Image Info / Badge */}
+            <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm p-4 border border-gold-dark/15 text-left flex justify-between items-center">
+              <div>
+                <p className="text-[10px] font-black text-gold-primary tracking-widest uppercase mb-1">
+                  {images[selectedImageIndex].category}
+                </p>
+                <h4 className="text-sm font-black text-white uppercase tracking-wider">
+                  {images[selectedImageIndex].alt}
+                </h4>
+              </div>
+              <span className="text-xs text-text-body font-mono">
+                {selectedImageIndex + 1} / {images.length}
+              </span>
+            </div>
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={showNextImage}
+            className="absolute right-4 sm:right-8 text-white hover:text-gold-primary transition-colors p-2 z-60 bg-bg-secondary/40 rounded-full border border-gold-dark/20 hover:bg-gold-primary/10"
+            aria-label="Next image"
+          >
+            <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      )}
     </section>
   );
 };

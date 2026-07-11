@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import SEO from '../components/SEO';
 import BookingForm from '../components/BookingForm';
 import FAQAccordion from '../components/FAQAccordion';
@@ -26,17 +26,45 @@ const ContactPage = () => {
     {
       icon: <MapPin className="w-5 h-5 text-gold-primary" />,
       title: 'LOCATION',
-      detail: '102 FIT STREET, METROPOLIS, NY 10001'
+      detail: 'Multiple Branches, Jabalpur, MP, India'
     },
     {
       icon: <Phone className="w-5 h-5 text-gold-primary" />,
       title: 'PHONE NUMBER',
-      detail: '+1 (555) 234-5678'
+      detail: '7049333222 | 7089333222'
     },
     {
       icon: <Mail className="w-5 h-5 text-gold-primary" />,
       title: 'EMAIL ADDRESS',
-      detail: 'support@goldgym.com'
+      detail: 'support@neofitnessgym.com'
+    },
+    {
+      icon: <Clock className="w-5 h-5 text-gold-primary" />,
+      title: 'OFFICE HOURS',
+      detail: 'Mon to Sat: 6am - 10pm | Sunday: 8am - 2pm'
+    }
+  ];
+
+  const branches = [
+    {
+      name: 'Neo Gorakhpur',
+      address: '1st Floor, Opp. Johnson Tower, Narmada Road, Gorakhpur, Jabalpur, Madhya Pradesh 482001, India',
+      phones: ['7049433222', '7049333222']
+    },
+    {
+      name: 'Neo Golbazar',
+      address: '1st Floor, Deshi Tower, Opp. Dr. Pawan Sthapak Eye Hospital, Golbazar, Jabalpur, Madhya Pradesh 482001, India',
+      phones: ['7049533222', '7089333222']
+    },
+    {
+      name: 'Neo Prime',
+      address: '2nd Floor, Up Side Axis Bank, Panch Ratan Building, Modern Road, Jabalpur, Madhya Pradesh 482001, India',
+      phones: ['7000808089']
+    },
+    {
+      name: 'Neo Dhanwantrinagar',
+      address: 'HIG-10, Garha Purva Road, Dhanwantri Nagar, Jabalpur, Madhya Pradesh 482001, India',
+      phones: ['7000808087']
     }
   ];
 
@@ -45,7 +73,7 @@ const ContactPage = () => {
       {/* SEO Title & Tags */}
       <SEO 
         title="Contact Us" 
-        description="Reach out to Gold Gym in Metropolis. Use our online scheduler to book a free personal training trial or message our team today." 
+        description="Reach out to Neo Fitness Gym in Jabalpur. Use our online scheduler to book a free personal training trial or message our team today." 
       />
 
       {/* a) PAGE HERO BANNER */}
@@ -53,7 +81,7 @@ const ContactPage = () => {
         <div 
           className="absolute inset-0 opacity-15 pointer-events-none"
           style={{
-            background: 'linear-gradient(135deg, #FFD700 0%, transparent 60%)'
+            background: 'linear-gradient(135deg, #EF4444 0%, transparent 60%)'
           }}
         />
         <div className="relative z-10 text-center px-4">
@@ -213,17 +241,27 @@ const ContactPage = () => {
                 ))}
               </div>
 
+              {/* CALL US TODAY CTA Button */}
+              <div className="pt-2">
+                <a
+                  href="tel:7049333222"
+                  className="inline-block w-full text-center py-4 text-xs font-bold tracking-widest text-black bg-gold-primary hover:bg-gold-accent transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-gold-primary/20"
+                >
+                  CALL US TODAY
+                </a>
+              </div>
+
               {/* Dark Google Map Iframe */}
               <div className="w-full border border-gold-dark/20 aspect-video relative overflow-hidden bg-bg-secondary">
                 <iframe
-                  src="https://www.google.com/maps?q=102+Fit+Street,+Metropolis,+NY+10001&output=embed"
+                  src="https://www.google.com/maps?q=Gorakhpur,+Jabalpur,+Madhya+Pradesh,+India&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Gold Gym Location"
+                  title="Neo Fitness Gym Location"
                   className="absolute inset-0 w-full h-full"
                 ></iframe>
               </div>
@@ -233,8 +271,49 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Reusable Accordion component placed at bottom of contact */}
+      {/* Branches Section */}
       <section className="py-20 bg-bg-secondary border-t border-gold-dark/15">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-black uppercase tracking-wider text-white">
+              OUR <span className="text-gold-primary">BRANCHES</span>
+            </h2>
+            <div className="w-16 h-[2px] bg-gold-primary mx-auto mt-3" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {branches.map((branch, idx) => (
+              <div key={idx} className="bg-bg-primary border border-gold-dark/15 p-6 hover:border-gold-primary/30 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <h4 className="text-lg font-black text-gold-primary uppercase tracking-widest mb-4">
+                    {branch.name}
+                  </h4>
+                  <p className="text-text-body text-xs leading-relaxed mb-6">
+                    {branch.address}
+                  </p>
+                </div>
+                <div className="border-t border-gold-dark/10 pt-4 mt-auto">
+                  <h5 className="text-[10px] font-black text-gold-primary tracking-widest uppercase mb-1">
+                    CONTACT
+                  </h5>
+                  <div className="text-white text-xs font-bold">
+                    {branch.phones.map((phone, pIdx) => (
+                      <span key={pIdx} className="block">
+                        <a href={`tel:${phone}`} className="hover:text-gold-primary transition-colors">
+                          {phone}
+                        </a>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reusable Accordion component placed at bottom of contact */}
+      <section className="py-20 bg-bg-primary border-t border-gold-dark/15">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-black uppercase tracking-wider">

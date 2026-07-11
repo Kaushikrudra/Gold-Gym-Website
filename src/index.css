@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold-primary: #FFD700;
-  --color-gold-dark: #B8860B;
-  --color-gold-accent: #FFC93C;
+  --color-gold-primary: #EF4444;
+  --color-gold-dark: #991B1B;
+  --color-gold-accent: #F87171;
   --color-bg-primary: #0a0a0a;
   --color-bg-secondary: #141414;
   --color-text-body: #b3b3b3;
@@ -11,21 +11,21 @@
 
 @layer utilities {
   .text-stroke-gold {
-    -webkit-text-stroke: 1px #FFC93C;
+    -webkit-text-stroke: 1px #F87171;
     color: transparent;
   }
   
   .text-stroke-gold-thick {
-    -webkit-text-stroke: 2px #FFC93C;
+    -webkit-text-stroke: 2px #F87171;
     color: transparent;
   }
 
   .gold-gradient {
-    background: linear-gradient(135deg, #FFD700, #B8860B, #000000);
+    background: linear-gradient(135deg, #EF4444, #991B1B, #000000);
   }
 
   .gold-gradient-hover {
-    background: linear-gradient(135deg, #B8860B, #FFD700);
+    background: linear-gradient(135deg, #991B1B, #EF4444);
   }
 }
 
@@ -48,9 +48,29 @@ body {
   background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B8860B;
+  background: #991B1B;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFD700;
+  background: #EF4444;
 }
+
+/* Custom transitions for Lightbox Modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

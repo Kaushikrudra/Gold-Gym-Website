@@ -33,7 +33,7 @@ const Blog = () => {
           {blogs.map((blog, idx) => (
             <div 
               key={idx}
-              className="bg-bg-primary border border-gold-dark/10 group flex flex-col md:flex-row h-full transition-all duration-300 hover:border-gold-primary/60 hover:shadow-[0_0_20px_rgba(184,134,11,0.1)]"
+              className="bg-bg-primary border border-gold-dark/10 group flex flex-col md:flex-row h-full transition-all duration-300 hover:border-gold-primary/60 hover:shadow-[0_0_20px_rgba(239,68,68,0.1)]"
             >
               {/* Blog Image */}
               <div className="md:w-1/2 h-64 md:h-auto overflow-hidden relative">

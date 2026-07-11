@@ -52,8 +52,8 @@ const PricingPage = () => {
     <div className="bg-bg-primary text-white min-h-screen">
       {/* SEO Title / Tags */}
       <SEO 
-        title="Membership Plans" 
-        description="Choose from our Starter, Pro, and Elite membership plans at Gold Gym. No joining fees, flexible pausing, and custom nutrition options." 
+        title="Membership Pricing" 
+        description="Choose from our Starter, Pro, and Elite membership plans at Neo Fitness Gym. No joining fees, flexible pausing, and custom nutrition options." 
       />
 
       {/* a) PAGE HERO BANNER */}
@@ -61,7 +61,7 @@ const PricingPage = () => {
         <div 
           className="absolute inset-0 opacity-15 pointer-events-none"
           style={{
-            background: 'linear-gradient(135deg, #FFD700 0%, transparent 60%)'
+            background: 'linear-gradient(135deg, #EF4444 0%, transparent 60%)'
           }}
         />
         <div className="relative z-10 text-center px-4">

@@ -2,10 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, keywords }) => {
-  const defaultTitle = "Gold Gym | Premium Fitness Training";
-  const defaultDesc = "Transform your body with expert personal training, group classes, and proven fitness programs at Gold Gym.";
+  const defaultTitle = "Neo Fitness Gym | Premium Fitness Training";
+  const defaultDesc = "Transform your body with expert personal training, group classes, and proven fitness programs at Neo Fitness Gym.";
   
-  const siteTitle = title ? `${title} | Gold Gym` : defaultTitle;
+  const siteTitle = title ? `${title} | Neo Fitness Gym` : defaultTitle;
   const siteDesc = description || defaultDesc;
   
   return (

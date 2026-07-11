@@ -17,7 +17,7 @@ const Home = () => {
       {/* SEO Title & Description */}
       <SEO 
         title="Premium Fitness Training in Metropolis" 
-        description="Transform your body with expert personal training, group classes, and proven fitness programs at Gold Gym."
+        description="Transform your body with expert personal training, group classes, and proven fitness programs at Neo Fitness Gym."
       />
 
       <Hero />

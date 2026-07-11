@@ -57,7 +57,7 @@ const BlogPage = () => {
         <div 
           className="absolute inset-0 opacity-15 pointer-events-none"
           style={{
-            background: 'linear-gradient(135deg, #FFD700 0%, transparent 60%)'
+            background: 'linear-gradient(135deg, #EF4444 0%, transparent 60%)'
           }}
         />
         <div className="relative z-10 text-center px-4">
@@ -81,7 +81,7 @@ const BlogPage = () => {
             {blogs.map((blog, idx) => (
               <div 
                 key={idx}
-                className="bg-bg-secondary border border-gold-dark/15 group flex flex-col h-full transition-all duration-300 hover:border-gold-primary/60 hover:shadow-[0_0_20px_rgba(184,134,11,0.1)]"
+                className="bg-bg-secondary border border-gold-dark/15 group flex flex-col h-full transition-all duration-300 hover:border-gold-primary/60 hover:shadow-[0_0_20px_rgba(239,68,68,0.1)]"
               >
                 {/* Blog Image */}
                 <div className="h-56 overflow-hidden relative">

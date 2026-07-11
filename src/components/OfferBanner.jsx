@@ -52,7 +52,7 @@ const OfferBanner = () => {
   const padZero = (num) => String(num).padStart(2, '0');
 
   return (
-    <div className="w-full bg-gold-primary text-black py-2.5 px-4 flex flex-wrap items-center justify-between gap-4 z-[60] relative shadow-md select-none">
+    <div className="w-full bg-gold-primary text-black py-1.5 px-4 flex flex-wrap items-center justify-between gap-4 z-[60] relative shadow-md select-none">
       
       {/* Banner Text + Countdown Timer */}
       <div className="flex-1 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-xs font-black tracking-widest uppercase">
@@ -61,7 +61,7 @@ const OfferBanner = () => {
         </span>
         
         {/* Countdown */}
-        <div className="flex items-center gap-1 font-mono text-[13px] bg-black/10 px-3 py-1 rounded-sm border border-black/5">
+        <div className="flex items-center gap-1 font-mono text-xs bg-black/10 px-2 py-0.5 rounded-sm border border-black/5">
           <span>{padZero(timeLeft.days)}D</span>:
           <span>{padZero(timeLeft.hours)}H</span>:
           <span>{padZero(timeLeft.minutes)}M</span>:
@@ -73,7 +73,7 @@ const OfferBanner = () => {
       <div className="flex items-center gap-3">
         <Link
           to="/pricing"
-          className="bg-black text-white hover:bg-white hover:text-black text-[10px] font-black tracking-widest px-4 py-1.5 transition-colors duration-300"
+          className="bg-black text-white hover:bg-white hover:text-black text-[9px] font-black tracking-widest px-3 py-1 transition-colors duration-300"
         >
           CLAIM OFFER
         </Link>

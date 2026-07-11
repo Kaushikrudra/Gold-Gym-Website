@@ -1,6 +1,6 @@
-# 🏋️ Gold Gym - Premium Fitness Landing Page
+# 🏋️ Neo Fitness Gym - Premium Fitness Landing Page
 
-A fully responsive, high-performance, multi-page landing platform for **GOLD GYM** built with React, Vite, Tailwind CSS v4, and React Router. Featuring a sleek modern dark-gold design aesthetic, client-side BMI calculations, dynamic booking schedulers, sliding reviews, and SEO optimization.
+A fully responsive, high-performance, multi-page landing platform for **Neo Fitness Gym** built with React, Vite, Tailwind CSS v4, and React Router. Featuring a sleek modern dark-gold design aesthetic, client-side BMI calculations, dynamic booking schedulers, sliding reviews, and SEO optimization.
 
 ---
 
@@ -34,7 +34,7 @@ The project is styled using **Tailwind CSS v4's CSS-first theme configuration** 
 The application separates concerns by dividing layouts and page content folders:
 
 ```text
-gold-gym/
+neo-fitness-gym/
 ├── netlify.toml          <- Deployment wildcard rewrite configuration
 ├── package.json          <- Dependencies: react-router-dom, react-helmet-async, lucide-react
 ├── vite.config.js        <- Imports @tailwindcss/vite plugin
@@ -73,7 +73,7 @@ To run the project locally, run the following commands in your terminal:
 
 1.  **Clone or navigate to the directory**:
     ```bash
-    cd gold-gym
+    cd neo-fitness-gym
     ```
 2.  **Install dependencies**:
     ```bash

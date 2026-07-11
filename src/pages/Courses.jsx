@@ -66,7 +66,7 @@ const Courses = () => {
         <div 
           className="absolute inset-0 opacity-15 pointer-events-none"
           style={{
-            background: 'linear-gradient(135deg, #FFD700 0%, transparent 60%)'
+            background: 'linear-gradient(135deg, #EF4444 0%, transparent 60%)'
           }}
         />
         

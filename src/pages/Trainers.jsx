@@ -43,7 +43,7 @@ const Trainers = () => {
       {/* SEO Title / Tags */}
       <SEO 
         title="Our Expert Trainers" 
-        description="Meet the professional coaches and certified instructors at Gold Gym who will guide you on your bodybuilding, strength, and weight loss goals."
+        description="Meet the professional coaches and certified instructors at Neo Fitness Gym who will guide you on your bodybuilding, strength, and weight loss goals."
       />
 
       {/* Hero Banner */}
@@ -51,7 +51,7 @@ const Trainers = () => {
         <div 
           className="absolute inset-0 opacity-15 pointer-events-none"
           style={{
-            background: 'linear-gradient(135deg, #FFD700 0%, transparent 60%)'
+            background: 'linear-gradient(135deg, #EF4444 0%, transparent 60%)'
           }}
         />
         <div className="relative z-10 text-center px-4">

@@ -2,24 +2,38 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import OfferBanner from './OfferBanner';
+import logo from '../assets/logo/neo-fit-gym-logo-transparent-hires.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
     let ticking = false;
+
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const isScrolled = window.scrollY > 50;
-          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+          const currentScrollY = window.scrollY;
+          
+          setScrolled(currentScrollY > 50);
+
+          if (currentScrollY > lastScrollY && currentScrollY > 150) {
+            setIsVisible(false);
+          } else {
+            setIsVisible(true);
+          }
+
+          lastScrollY = currentScrollY;
           ticking = false;
         });
         ticking = true;
       }
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -36,8 +50,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-bg-primary/98 border-b border-gold-dark/40 py-2' : 'bg-bg-primary border-b border-gold-dark/20 py-3'
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 transform ${
+      isVisible || isOpen ? 'translate-y-0' : '-translate-y-full'
+    } ${
+      scrolled ? 'bg-bg-primary/98 border-b border-gold-dark/40 py-0.5' : 'bg-bg-primary border-b border-gold-dark/20 py-1'
     }`}>
       {/* 5. Sticky Top Offer Banner */}
       <OfferBanner />
@@ -45,20 +61,24 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-black tracking-wider text-gold-primary hover:text-gold-accent transition-colors duration-300">
-              GOLD<span className="text-white">_</span>GYM
+          <div className="flex-shrink-0 flex items-center">
+            <Link to="/" className="flex items-center">
+              <img 
+                src={logo} 
+                alt="Neo Fitness Gym Logo" 
+                className="h-[60px] w-auto object-contain" 
+              />
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <div className="flex space-x-6">
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="flex space-x-4">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`text-xs font-bold tracking-widest transition-colors duration-300 ${
+                  className={`text-[11px] font-bold tracking-widest transition-colors duration-300 ${
                     location.pathname === item.href 
                       ? 'text-gold-primary' 
                       : 'text-text-body hover:text-gold-primary'
@@ -72,7 +92,7 @@ const Navbar = () => {
             {/* Contact Me Button */}
             <Link
               to="/contact"
-              className="inline-block px-6 py-2.5 text-xs font-bold tracking-widest text-white border border-gold-primary rounded-none hover:bg-gold-primary hover:text-black transition-all duration-300"
+              className="inline-block px-4 py-1.5 text-[10px] font-bold tracking-widest text-white border border-gold-primary rounded-none hover:bg-gold-primary hover:text-black transition-all duration-300"
             >
               CONTACT ME
             </Link>
@@ -93,7 +113,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed inset-0 top-[110px] z-40 bg-bg-primary/98 backdrop-blur-lg border-t border-gold-dark/20 transition-all duration-300 ease-in-out ${
+      <div className={`md:hidden fixed inset-0 top-[104px] z-40 bg-bg-primary/98 backdrop-blur-lg border-t border-gold-dark/20 transition-all duration-300 ease-in-out ${
         isOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'
       }`}>
         <div className="px-4 pt-8 pb-12 space-y-6 text-center">

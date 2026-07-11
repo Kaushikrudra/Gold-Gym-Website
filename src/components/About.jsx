@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import aboutVideoSrc from '../assets/videos/gymvideo-portrait-web-optimized.mp4';
 
 const About = () => {
   return (
@@ -17,12 +18,17 @@ const About = () => {
             <div className="absolute top-0 bottom-0 left-[10%] lg:left-[5%] w-[8px] bg-gradient-to-b from-gold-primary via-gold-dark to-transparent transform -skew-x-12 z-0 hidden sm:block" />
 
             {/* The Image Container with border and shadow */}
-            <div className="relative z-10 w-full max-w-[450px] aspect-[4/5] bg-bg-secondary p-3 border border-gold-dark/20 shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=800&auto=format&fit=crop" 
-                alt="Trainer Portrait" 
-                className="w-full h-full object-cover"
-              />
+            <div className="relative z-10 w-full max-w-[450px] aspect-[4/5] bg-bg-secondary shadow-2xl overflow-hidden">
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                poster="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=800&auto=format&fit=crop"
+                className="w-full h-full object-cover animate-fade-in"
+              >
+                <source src={aboutVideoSrc} type="video/mp4" />
+              </video>
               
               {/* Overlapping diagonal accent badge */}
               <div className="absolute -bottom-5 -right-5 bg-gold-primary text-black font-black px-6 py-3 tracking-widest text-xs uppercase hidden sm:block transform hover:scale-105 transition-transform duration-300">
@@ -35,16 +41,24 @@ const About = () => {
           <div className="text-left">
             {/* Heading */}
             <h2 className="text-4xl sm:text-5xl font-black text-white uppercase tracking-wider mb-8">
-              ABOUT <span className="text-gold-primary">ME</span>
+              ABOUT <span className="text-gold-primary">US</span>
             </h2>
 
             {/* Paragraphs */}
             <p className="text-text-body text-base leading-relaxed mb-6">
-              Gold Gym is built on one simple belief — that every body deserves expert guidance. With over 8 years of hands-on coaching experience, I've helped hundreds of members transform their strength, confidence, and daily energy through structured, sustainable training.
+              The aim behind establishing Neo Fitness Gym is based on providing our society with the fitter and the healthier living. We the team at Neo Fitness Gym believe fitness encompasses an essential part of our being. Physical, mental and emotional health is most important in this sedentary arena.
+            </p>
+
+            <p className="text-text-body text-base leading-relaxed mb-6">
+              Neo Fitness Gym provides well-sanitised bodybuilding and muscle-toning equipment to our members. We ensure safety and care to all the members by providing them with a warm, friendly workout environment and convenient gym access at affordable prices.
+            </p>
+
+            <p className="text-text-body text-base leading-relaxed mb-6">
+              Our concept of fitness includes the holistic wellbeing of an individual. We have personal trainers who train and assist you in bodybuilding, fat burning, weight loss, weight gain, muscle toning and strength training and guide you on the diet and nutritional requirement. The gym also provides aerobics, yoga and Zumba sessions to its members.
             </p>
 
             <p className="text-text-body text-base leading-relaxed mb-8">
-              Whether you're stepping into a gym for the first time or chasing a competition-ready physique, my approach blends proven strength principles with a plan built around your body, your schedule, and your goals.
+              Neo Fitness Gym believes in building a long-term relationship with its members. We treat every member as our family. And with this love of our members, we have seen our family growing and have expanded our branches to multiple locations in Jabalpur.
             </p>
 
             {/* Outlined Buttons */}
